@@ -16,22 +16,24 @@
     <!-- obtenir les données de l'oeuvre demandée -->
     <?php
 
-    if (!isset($_GET['id'])) {
-      echo "Aucune oeuvre sélectionnée.";
-      return;
+    if (! isset($_GET['id'])) {
+        echo 'Aucune oeuvre sélectionnée.';
+
+        return;
     }
 
-    require_once 'oeuvres.php';
-    require_once 'functions.php';
+        require_once 'data.php';
+  require_once 'functions.php';
 
-    $oeuvre = getOeuvre($oeuvres, $_GET['id']);
+  $oeuvre = getOeuvre($oeuvres, $_GET['id']);
 
-    if (!$oeuvre) {
-      echo "Aucune oeuvre n'a l'identifiant " . $_GET['id'];
+  if (! $oeuvre) {
+      echo "Aucune oeuvre n'a l'identifiant ".$_GET['id'];
+
       return;
-    }
+  }
 
-    ?>
+  ?>
 
     <article id="detail-oeuvre">
       <div id="img-oeuvre">

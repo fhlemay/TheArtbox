@@ -15,10 +15,10 @@
     <div id="liste-oeuvres">
 
       <!-- inclusion des données du projet -->
-      <?php require_once 'oeuvres.php'; ?>
+      <?php require_once 'data.php'; ?>
 
       <!-- génération de la carte de chaque donnée -->
-      <?php foreach ($oeuvres as $oeuvre) : ?>
+      <?php foreach ($oeuvres as $oeuvre) { ?>
         <article class="oeuvre">
           <a href="oeuvre.php?id=<?php echo $oeuvre['id'] ?>">
             <img src="img/<?php echo $oeuvre['imageFile'] ?>.png" alt="<?php echo $oeuvre['title'] ?>">
@@ -26,7 +26,7 @@
             <p class="description"><?php echo $oeuvre['description'] ?></p>
           </a>
         </article>
-      <?php endforeach ?>
+      <?php } ?>
 
     </div>
   </main>
