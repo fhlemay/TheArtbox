@@ -13,15 +13,40 @@
   <?php require_once 'header.php'; ?>
   <main>
 
+    <!-- obtenir les données de l'oeuvre demandée -->
+    <?php
+
+    if (!isset($_GET['id'])) {
+      echo "Aucune oeuvre sélectionnée.";
+      return;
+    }
+
+    require_once 'oeuvres.php';
+    require_once 'functions.php';
+
+    $oeuvre = getOeuvre($oeuvres, $_GET['id']);
+
+    if (!$oeuvre) {
+      echo "Aucune oeuvre n'a l'identifiant " . $_GET['id'];
+      return;
+    }
+
+    ?>
+
     <article id="detail-oeuvre">
       <div id="img-oeuvre">
-        <img src="img/clark-van-der-beken.png" alt="Dodomu">
+
+        <img src="img/<?php echo $oeuvre['imageFile'] ?>.png" alt="<?php echo $oeuvre['title'] ?>">
       </div>
       <div id="contenu-oeuvre">
-        <h1>Dodomu</h1>
-        <p class="description">Mia Tozerski</p>
+        <h1>
+          <?php echo $oeuvre['title'] ?>
+        </h1>
+        <p class="description">
+          <?php echo $oeuvre['description'] ?>
+        </p>
         <p class="description-complete">
-          Mia Tozerski est une artiste peintre ukrainienne réfugiée de la guerre. Sur cette œuvre, Dodomu ("domicile" en ukrainien), elle nous montre la tristesse du peuple ukrainien qu'elle partage, ayant elle-même dû quitter son foyer. L'œuvre évoque le drapeau liquéfié d'une Ukraine en souffrance, pleurant la mort de ses compatriotes. Ce travail chargé d'émotion est le symbole d'un événement qui marquera l'Histoire. Cette peinture à l'acrylique rayonne grâce à son fond lisse et ses mélanges de couleurs éclatantes.
+          <?php echo $oeuvre['descriptionComplete'] ?>
         </p>
       </div>
     </article>
